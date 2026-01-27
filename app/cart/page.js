@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '../../components/Header';
 import SuccessScreen from '../../components/SuccessScreen';
 import { useCart } from '../../context/CartContext';
