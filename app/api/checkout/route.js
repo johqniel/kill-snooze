@@ -1,27 +1,24 @@
-import { sql } from '@vercel/postgres';
+import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     try {
-        const { name, email, address, city, zip, country, newsletter, digitalDelivery } = await request.json();
+        const data = await request.json();
+        const { name, email } = data;
 
         if (!email || !name) {
             return NextResponse.json({ error: 'Name and Email are required' }, { status: 400 });
         }
 
-        const addressDetails = JSON.stringify({
-            address,
-            city,
-            zip,
-            country
+        const filename = `orders/${Date.now()}-${email}.json`;
+        const jsonContent = JSON.stringify(data, null, 2);
+
+        const blob = await put(filename, jsonContent, {
+            access: 'public',
+            contentType: 'application/json',
         });
 
-        await sql`
-      INSERT INTO orders (name, email, address_details, digital_delivery, newsletter)
-      VALUES (${name}, ${email}, ${addressDetails}, ${digitalDelivery}, ${newsletter});
-    `;
-
-        return NextResponse.json({ message: 'Order created successfully' }, { status: 200 });
+        return NextResponse.json({ message: 'Order created successfully', url: blob.url }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
