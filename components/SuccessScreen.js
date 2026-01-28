@@ -1,6 +1,18 @@
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function SuccessScreen() {
+    const [limit, setLimit] = useState(99);
+
+    useEffect(() => {
+        fetch('/api/stats')
+            .then(res => res.json())
+            .then(data => {
+                if (data.limit) setLimit(data.limit);
+            })
+            .catch(err => console.error('Failed to fetch stats:', err));
+    }, []);
+
     return (
         <div style={{
             position: 'fixed',
@@ -22,7 +34,7 @@ export default function SuccessScreen() {
                 YOU MADE IT.
             </h1>
             <p style={{ fontSize: '2rem', fontWeight: 'bold', maxWidth: '800px' }}>
-                ORDER #087 CONFIRMED.
+                YOU ARE ONE OF THE FIRST {limit} CLIENTS.
             </p>
             <div style={{ width: '100px', height: '5px', backgroundColor: 'white', margin: '30px auto' }}></div>
             <p style={{ fontSize: '1.5rem' }}>

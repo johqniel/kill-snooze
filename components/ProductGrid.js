@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import JoinListModal from './JoinListModal';
 import { useCart } from '../context/CartContext';
@@ -6,6 +6,16 @@ import { useCart } from '../context/CartContext';
 export default function ProductGrid() {
     const { addToCart } = useCart();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [limit, setLimit] = useState(99); // Default limit
+
+    useEffect(() => {
+        fetch('/api/stats')
+            .then(res => res.json())
+            .then(data => {
+                if (data.limit) setLimit(data.limit);
+            })
+            .catch(err => console.error('Failed to fetch stats:', err));
+    }, []);
 
     const products = [
         {
@@ -14,14 +24,14 @@ export default function ProductGrid() {
             price: "€89.00",
             displayPrice: "€0.00",
             images: ["/envelope.png", "/envelope_product_one.png"],
-            statusText: "Free for the first 100 orders.",
+            statusText: `Free for the first ${limit} orders.`,
             buttonText: "ADD TO CART",
             action: "add_to_cart"
         },
         {
             id: 2,
             name: "THE BOX",
-            price: null, // No struck-through price for box? assuming just preorder
+            price: null,
             displayPrice: "PREORDER",
             images: ["/box.png", "/box_product_one.png"],
             statusText: "Register for preorder list.",
@@ -62,7 +72,7 @@ export default function ProductGrid() {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', // Increased min size for better display of 2 items
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
                     gap: '40px'
                 }}>
                     {products.map((product) => (

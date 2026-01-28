@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import SuccessScreen from '../../components/SuccessScreen';
 import { useCart } from '../../context/CartContext';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 export default function CartPage() {
     const { cartItem, clearCart } = useCart();
     const [step, setStep] = useState(1); // 1: Summary, 2: Address, 3: Success
+    const [limit, setLimit] = useState(99);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,6 +22,15 @@ export default function CartPage() {
     });
 
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        fetch('/api/stats')
+            .then(res => res.json())
+            .then(data => {
+                if (data.limit) setLimit(data.limit);
+            })
+            .catch(err => console.error('Failed to fetch stats:', err));
+    }, []);
 
     const handleChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -114,7 +124,7 @@ export default function CartPage() {
                                 <span>{displayItem.price}</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#d01d1d', fontWeight: 'bold' }}>
-                                <span>Discount (FIRST100)</span>
+                                <span>Discount (FIRST{limit})</span>
                                 <span>-{displayItem.price}</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.5rem', fontWeight: '900', marginTop: '20px' }}>
