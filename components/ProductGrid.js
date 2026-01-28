@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import JoinListModal from './JoinListModal';
-import { useRouter } from 'next/navigation';
+import OrderModal from './OrderModal';
 
 export default function ProductGrid() {
-    const router = useRouter(); // Initialize router
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+    const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
     const [limit, setLimit] = useState(99); // Default limit
 
     useEffect(() => {
@@ -38,9 +38,9 @@ export default function ProductGrid() {
 
     const handleAction = (product) => {
         if (product.action === 'contact') {
-            router.push('/order');
+            setIsOrderModalOpen(true);
         } else if (product.action === 'join_list') {
-            setIsModalOpen(true);
+            setIsJoinModalOpen(true);
         }
     };
 
@@ -82,8 +82,13 @@ export default function ProductGrid() {
             </div>
 
             <JoinListModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
+                isOpen={isJoinModalOpen}
+                onClose={() => setIsJoinModalOpen(false)}
+            />
+
+            <OrderModal
+                isOpen={isOrderModalOpen}
+                onClose={() => setIsOrderModalOpen(false)}
             />
         </section>
     );
