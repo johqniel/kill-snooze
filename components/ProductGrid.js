@@ -3,6 +3,9 @@ import ProductCard from './ProductCard';
 import JoinListModal from './JoinListModal';
 import OrderModal from './OrderModal';
 
+// TOGGLE: Set to true to use comic-style images
+const USE_COMIC_IMAGES = true;
+
 export default function ProductGrid() {
     const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
     const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -21,7 +24,9 @@ export default function ProductGrid() {
         {
             id: 1,
             name: "THE ENVELOPE",
-            images: ["/envelope.png", "/envelope_product_one.png"],
+            images: USE_COMIC_IMAGES
+                ? ["/envelope_comic.png", "/envelope_product_one.png"]
+                : ["/envelope.png", "/envelope_product_one.png"],
             statusText: "----------",
             buttonText: "KONTAKT AUFNEHMEN",
             action: "contact"
@@ -29,7 +34,9 @@ export default function ProductGrid() {
         {
             id: 2,
             name: "THE BOX",
-            images: ["/box.png", "/box_product_one.png"],
+            images: USE_COMIC_IMAGES
+                ? ["/box_comic.png", "/box_product_one.png"]
+                : ["/box.png", "/box_product_one.png"],
             statusText: "------------",
             buttonText: "PROJEKT UNTERSTÜTZEN",
             action: "join_list"
