@@ -11,10 +11,10 @@ export default function ImpressumPage() {
             <div className="container" style={{ flex: 1, padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
 
 
-                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '40px' }}>
+                <div className="impressum-grid">
 
                     {/* LEFT COLUMN: IMPRESSUM */}
-                    <div style={{ flex: 1, minWidth: '300px', paddingRight: '40px', borderRight: '1px solid #000' }}>
+                    <div className="impressum-column impressum-column-left">
                         <h1 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
                             IMPRESSUM
                         </h1>
@@ -62,7 +62,7 @@ export default function ImpressumPage() {
                     </div>
 
                     {/* RIGHT COLUMN: PRIVACY */}
-                    <div style={{ flex: 1, minWidth: '300px' }}>
+                    <div className="impressum-column">
                         <h1 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
                             DATENSCHUTZ
                         </h1>
