@@ -136,7 +136,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             letterSpacing: '-1px'
                         }}>
-                            AUF DIE WARTELISTE
+                            Infomaterial anfordern
                         </h2>
 
                         {error && <p style={{ color: '#d01d1d', marginBottom: '15px', fontWeight: 'bold' }}>{error}</p>}
@@ -184,7 +184,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                                     style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }}
                                 />
                                 <label htmlFor="newsletter" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>
-                                    Ich stimme der Anmeldung zum Newsletter zu und möchte Updates erhalten.
+                                    Ich willige ein, dass meine Angaben (inkl. Adresse) zur einmaligen Kontaktaufnahme per Brief oder E-Mail verarbeitet werden. <Link href="/impressum" target="_blank" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>Ich willige ein, dass meine Angaben (inkl. Adresse) zur einmaligen Kontaktaufnahme per Brief oder E-Mail verarbeitet werden. <Link href="/impressum" target="_blank" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>
                                 </label>
                             </div>
 

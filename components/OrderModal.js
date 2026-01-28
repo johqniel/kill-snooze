@@ -12,15 +12,16 @@ export default function OrderModal({ isOpen, onClose }) {
         city: '',
         zip: '',
         country: '',
-        newsletter: false,
-        digitalDelivery: false
+        newsletter: false
     });
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     // Reset state when opened
     useEffect(() => {
         if (isOpen) {
             setStep(1);
+            setError('');
             setFormData({
                 name: '',
                 email: '',
@@ -28,8 +29,7 @@ export default function OrderModal({ isOpen, onClose }) {
                 city: '',
                 zip: '',
                 country: '',
-                newsletter: false,
-                digitalDelivery: false
+                newsletter: false
             });
         }
     }, [isOpen]);
@@ -43,23 +43,31 @@ export default function OrderModal({ isOpen, onClose }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+
+        if (!formData.newsletter) {
+            setError('Du musst der Datenverarbeitung zustimmen.');
+            return;
+        }
+
         setLoading(true);
 
         try {
             const response = await fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, digitalDelivery: false }), // Always false now
             });
 
             if (response.ok) {
                 setStep(2);
             } else {
-                alert('Fehler bei der Bestellung. Bitte versuche es erneut.');
+                const data = await response.json();
+                setError(data.error || 'Fehler bei der Bestellung. Bitte versuche es erneut.');
             }
         } catch (error) {
             console.error('Submission error:', error);
-            alert('Ein Fehler ist aufgetreten.');
+            setError('Ein Fehler ist aufgetreten.');
         } finally {
             setLoading(false);
         }
@@ -139,6 +147,8 @@ export default function OrderModal({ isOpen, onClose }) {
                             <p style={{ color: '#d01d1d', fontWeight: 'bold' }}>----------</p>
                         </div>
 
+                        {error && <p style={{ color: '#d01d1d', marginBottom: '15px', fontWeight: 'bold' }}>{error}</p>}
+
                         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left' }}>
                             {/* Personal Info */}
                             <div>
@@ -153,20 +163,20 @@ export default function OrderModal({ isOpen, onClose }) {
 
                             {/* Address */}
                             <div>
-                                <input type="text" name="address" placeholder="STRASSE & HAUSNUMMER *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.address} onChange={handleChange}
-                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                                <input type="text" name="address" placeholder="STRASSE & HAUSNUMMER *" required value={formData.address} onChange={handleChange}
+                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0 }} />
                             </div>
 
                             <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
-                                <input type="text" name="city" placeholder="STADT *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.city} onChange={handleChange}
-                                    style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
-                                <input type="text" name="zip" placeholder="PLZ *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.zip} onChange={handleChange}
-                                    style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                                <input type="text" name="city" placeholder="STADT *" required value={formData.city} onChange={handleChange}
+                                    style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0 }} />
+                                <input type="text" name="zip" placeholder="PLZ *" required value={formData.zip} onChange={handleChange}
+                                    style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0 }} />
                             </div>
 
                             <div>
-                                <input type="text" name="country" placeholder="LAND *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.country} onChange={handleChange}
-                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                                <input type="text" name="country" placeholder="LAND *" required value={formData.country} onChange={handleChange}
+                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0 }} />
                             </div>
 
                             {/* Options */}
@@ -177,13 +187,9 @@ export default function OrderModal({ isOpen, onClose }) {
                                         Ich willige ein, dass meine Angaben (inkl. Adresse) zur einmaligen Kontaktaufnahme per Brief oder E-Mail verarbeitet werden. <Link href="/impressum" target="_blank" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>
                                     </label>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                                    <input type="checkbox" id="digitalDelivery" name="digitalDelivery" checked={formData.digitalDelivery} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }} />
-                                    <label htmlFor="digitalDelivery" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>Produkt per E-Mail erhalten statt Post.</label>
-                                </div>
                             </div>
 
-                            <button type="submit" className="btn-primary" style={{ width: '100%', borderRadius: 0, marginTop: '10px', padding: '15px', opacity: (loading || !formData.newsletter) ? 0.7 : 1 }} disabled={loading || !formData.newsletter}>
+                            <button type="submit" className="btn-primary" style={{ width: '100%', borderRadius: 0, marginTop: '10px', padding: '15px', opacity: loading ? 0.7 : 1 }} disabled={loading}>
                                 {loading ? 'BEARBEITE...' : 'BESTELLUNG ABSCHICKEN'}
                             </button>
                         </form>
