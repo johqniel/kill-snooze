@@ -1,10 +1,8 @@
+'use client';
+
 import Link from 'next/link';
-import { useCart } from '../context/CartContext';
 
 export default function Header() {
-  const { cartItem } = useCart();
-  const cartCount = cartItem ? 1 : 0;
-
   return (
     <header style={{
       paddingBottom: '20px',
@@ -23,25 +21,12 @@ export default function Header() {
       <div style={{ borderBottom: '1px solid #000', marginBottom: '20px' }}></div>
 
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" className="supreme-logo" style={{ textDecoration: 'none' }}>
+        <Link href="/" className="site-logo" style={{ textDecoration: 'none' }}>
           KILL SNOOZE!
         </Link>
-
-        <Link
-          href="/cart"
-          style={{
-            background: 'none',
-            border: 'none',
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            textTransform: 'uppercase',
-            textDecoration: 'none',
-            color: 'inherit'
-          }}
-        >
-          CART ({cartCount})
-        </Link>
+        <div style={{ width: '24px' }}>
+          {/* Placeholder for alignment */}
+        </div>
       </div>
     </header>
   );

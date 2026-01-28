@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import JoinListModal from './JoinListModal';
-import { useCart } from '../context/CartContext';
 import { useRouter } from 'next/navigation';
 
 export default function ProductGrid() {
-    const { addToCart } = useCart();
     const router = useRouter(); // Initialize router
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [limit, setLimit] = useState(99); // Default limit
@@ -40,8 +38,7 @@ export default function ProductGrid() {
 
     const handleAction = (product) => {
         if (product.action === 'contact') {
-            addToCart(product); // Keep this to set the item in context, though we might not use it visually
-            router.push('/cart');
+            router.push('/order');
         } else if (product.action === 'join_list') {
             setIsModalOpen(true);
         }
