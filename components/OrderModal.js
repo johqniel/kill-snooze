@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import SuccessScreen from './SuccessScreen'; // We might want a smaller inline success or just use the Component
 
 export default function OrderModal({ isOpen, onClose }) {
     const [step, setStep] = useState(1); // 1: Form, 2: Success
@@ -71,32 +69,32 @@ export default function OrderModal({ isOpen, onClose }) {
             position: 'fixed',
             top: 0,
             left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 2000,
-            backdropFilter: 'blur(5px)'
+            zIndex: 2000
         }} onClick={onClose}>
             <div style={{
                 backgroundColor: '#fff',
                 padding: '40px',
-                width: '100%',
-                maxWidth: '600px',
+                maxWidth: '500px',
+                width: '90%',
                 maxHeight: '90vh',
                 overflowY: 'auto',
                 position: 'relative',
-                border: '1px solid #000'
+                border: '2px solid #000',
+                textAlign: 'center'
             }} onClick={e => e.stopPropagation()}>
 
                 <button
                     onClick={onClose}
                     style={{
                         position: 'absolute',
-                        top: '20px',
-                        right: '20px',
+                        top: '10px',
+                        right: '15px',
                         background: 'none',
                         border: 'none',
                         fontSize: '1.5rem',
@@ -104,68 +102,85 @@ export default function OrderModal({ isOpen, onClose }) {
                         fontWeight: 'bold'
                     }}
                 >
-                    ✕
+                    X
                 </button>
 
                 {step === 2 ? (
-                    <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                    <div style={{ padding: '20px 0' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '20px', textTransform: 'uppercase' }}>
                             GESCHAFFT!
                         </h2>
-                        <p style={{ marginBottom: '20px' }}>
+                        <p style={{ fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '30px' }}>
                             Deine Bestellung war erfolgreich.
                         </p>
-                        <p style={{ fontSize: '0.9rem', color: '#666' }}>
+                        <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '30px' }}>
                             Du erhältst in Kürze eine Bestätigung per E-Mail.
                         </p>
-                        <button onClick={onClose} className="btn-primary" style={{ marginTop: '30px' }}>
+                        <button onClick={onClose} className="btn-primary" style={{ width: '100%', borderRadius: 0 }}>
                             SCHLIESSEN
                         </button>
                     </div>
                 ) : (
                     <>
-                        <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
+                        <h2 style={{
+                            fontSize: '1.8rem',
+                            fontWeight: '800',
+                            marginBottom: '10px',
+                            textAlign: 'center',
+                            textTransform: 'uppercase',
+                            letterSpacing: '-1px'
+                        }}>
                             BESTELLUNG ABSCHLIESSEN
                         </h2>
 
-                        <div style={{ marginBottom: '30px', textAlign: 'center' }}>
+                        <div style={{ marginBottom: '20px', textAlign: 'center' }}>
                             <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>THE ENVELOPE</h3>
                             <p style={{ color: '#d01d1d', fontWeight: 'bold' }}>----------</p>
                         </div>
 
-                        <form onSubmit={handleSubmit}>
-                            <input type="text" name="name" placeholder="VOLLSTÄNDIGER NAME" required value={formData.name} onChange={handleChange}
-                                style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0 }} />
-
-                            <input type="email" name="email" placeholder="E-MAIL ADRESSE" required value={formData.email} onChange={handleChange}
-                                style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0 }} />
-
-                            <input type="text" name="address" placeholder="STRASSE & HAUSNUMMER" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.address} onChange={handleChange}
-                                style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
-
-                            <div style={{ display: 'flex', gap: '15px' }}>
-                                <input type="text" name="city" placeholder="STADT" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.city} onChange={handleChange}
-                                    style={{ flex: 1, padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
-                                <input type="text" name="zip" placeholder="PLZ" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.zip} onChange={handleChange}
-                                    style={{ flex: 1, padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left' }}>
+                            {/* Personal Info */}
+                            <div>
+                                <input type="text" name="name" placeholder="VOLLSTÄNDIGER NAME *" required value={formData.name} onChange={handleChange}
+                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0 }} />
                             </div>
 
-                            <input type="text" name="country" placeholder="LAND" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.country} onChange={handleChange}
-                                style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                            <div>
+                                <input type="email" name="email" placeholder="E-MAIL ADRESSE *" required value={formData.email} onChange={handleChange}
+                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0 }} />
+                            </div>
+
+                            {/* Address */}
+                            <div>
+                                <input type="text" name="address" placeholder="STRASSE & HAUSNUMMER *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.address} onChange={handleChange}
+                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                            </div>
+
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <input type="text" name="city" placeholder="STADT *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.city} onChange={handleChange}
+                                    style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                                <input type="text" name="zip" placeholder="PLZ *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.zip} onChange={handleChange}
+                                    style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                            </div>
+
+                            <div>
+                                <input type="text" name="country" placeholder="LAND *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.country} onChange={handleChange}
+                                    style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
+                            </div>
 
                             {/* Options */}
-                            <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '30px' }}>
+                            <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                                    <input type="checkbox" id="newsletter" name="newsletter" checked={formData.newsletter} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)' }} />
+                                    <input type="checkbox" id="newsletter" name="newsletter" checked={formData.newsletter} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }} />
                                     <label htmlFor="newsletter" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>Ich stimme dem Newsletter zu.</label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                                    <input type="checkbox" id="digitalDelivery" name="digitalDelivery" checked={formData.digitalDelivery} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)' }} />
+                                    <input type="checkbox" id="digitalDelivery" name="digitalDelivery" checked={formData.digitalDelivery} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }} />
                                     <label htmlFor="digitalDelivery" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>Produkt per E-Mail erhalten statt Post.</label>
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn-primary" style={{ width: '100%', borderRadius: 0, opacity: loading ? 0.7 : 1 }} disabled={loading}>
+                            <button type="submit" className="btn-primary" style={{ width: '100%', borderRadius: 0, marginTop: '10px', padding: '15px', opacity: loading ? 0.7 : 1 }} disabled={loading}>
                                 {loading ? 'BEARBEITE...' : 'BESTELLUNG ABSCHICKEN'}
                             </button>
                         </form>
