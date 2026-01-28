@@ -13,9 +13,8 @@ export default function Home() {
 
       <ProductGrid />
 
-      <footer style={{ textAlign: 'center', padding: '40px 0', color: '#999', fontSize: '0.8rem' }}>
-        &copy; 2026 KILL SNOOZE INC. ALLE RECHTE VORBEHALTEN. <br />
-        <Link href="/impressum" style={{ color: '#999', textDecoration: 'underline', marginTop: '10px', display: 'inline-block' }}>IMPRESSUM</Link>
+      <footer style={{ textAlign: 'center', padding: '40px 0' }}>
+        <Link href="/impressum" style={{ color: '#999', textDecoration: 'underline', fontSize: '0.8rem', display: 'inline-block' }}>IMPRESSUM</Link>
       </footer>
     </main>
   );

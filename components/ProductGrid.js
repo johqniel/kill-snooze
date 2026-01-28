@@ -24,7 +24,7 @@ export default function ProductGrid() {
             id: 1,
             name: "THE ENVELOPE",
             images: ["/envelope.png", "/envelope_product_one.png"],
-            statusText: `Kostenlos für die ersten ${limit} Bestellungen.`,
+            statusText: "----------",
             buttonText: "KONTAKT AUFNEHMEN",
             action: "contact"
         },
@@ -32,7 +32,7 @@ export default function ProductGrid() {
             id: 2,
             name: "THE BOX",
             images: ["/box.png", "/box_product_one.png"],
-            statusText: "Für Vorbesteller-Liste anmelden.",
+            statusText: "------------",
             buttonText: "PROJEKT UNTERSTÜTZEN",
             action: "join_list"
         }

@@ -86,8 +86,8 @@ export default function ImpressumPage() {
                 </Link>
             </div>
 
-            <footer style={{ textAlign: 'center', padding: '40px 0', color: '#999', fontSize: '0.8rem', borderTop: '1px solid #eee', marginTop: 'auto' }}>
-                &copy; 2026 KILL SNOOZE INC. ALLE RECHTE VORBEHALTEN.
+            <footer style={{ textAlign: 'center', padding: '40px 0', borderTop: '1px solid #eee', marginTop: 'auto' }}>
+                <Link href="/impressum" style={{ color: '#999', textDecoration: 'underline', fontSize: '0.8rem', display: 'inline-block' }}>IMPRESSUM</Link>
             </footer>
         </main>
     );
