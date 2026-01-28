@@ -139,7 +139,7 @@ export default function OrderModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             letterSpacing: '-1px'
                         }}>
-                            KONTAKT AUFNEHMEN
+                            Infomaterial anfordern
                         </h2>
 
                         <div style={{ marginBottom: '20px', textAlign: 'center' }}>

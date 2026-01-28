@@ -24,7 +24,7 @@ export default function ImpressumPage() {
 
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '10px' }}>Kontakt</h3>
                     <p style={{ lineHeight: '1.6' }}>
-                        E-Mail: contact@kill-snooze.com
+                        E-Mail: daniel.nogues.daniel@gmail.com
                     </p>
 
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '10px' }}>Redaktionell verantwortlich</h3>
@@ -51,7 +51,7 @@ export default function ImpressumPage() {
                         Diese Webseite ist ein Satire-Projekt.
                     </p>
                     <p style={{ lineHeight: '1.6', marginBottom: '15px' }}>
-                        Die angebotenen Produkte dienen effektiv als künstlerischer Kommentar zur modernen Produktivitätskultur.
+                        Die Seite dient als künstlerischer Kommentar zur modernen Produktivitätskultur.
                     </p>
 
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '10px' }}>Haftung für Links</h3>
@@ -77,7 +77,7 @@ export default function ImpressumPage() {
                         Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst.
                     </p>
                     <p style={{ lineHeight: '1.6', fontWeight: 'bold', border: '2px solid black', padding: '20px' }}>
-                        Hiermit erklären wir ausdrücklich, dass alle erhobenen personenbezogenen Daten (Name, Adresse, E-Mail-Adresse) ausschließlich ein einziges Mal verwendet werden, um Ihnen das angeforderte Informationsmaterial oder Produkt zuzusenden. Nach diesem Vorgang werden Ihre Daten umgehend und unwiderruflich gelöscht. Es erfolgt keine weitere Speicherung, Verarbeitung oder Weitergabe an Dritte.
+                        Hiermit erklären wir ausdrücklich, dass alle erhobenen personenbezogenen Daten (Name, Adresse, E-Mail-Adresse) ausschließlich ein einziges Mal verwendet werden, um Ihnen das angeforderte Informationsmaterial zuzusenden. Nach diesem Vorgang werden Ihre Daten umgehend und unwiderruflich gelöscht. Es erfolgt keine weitere Speicherung, Verarbeitung oder Weitergabe an Dritte.
                     </p>
                 </section>
 
