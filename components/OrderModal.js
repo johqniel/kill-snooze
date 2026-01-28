@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function OrderModal({ isOpen, onClose }) {
     const [step, setStep] = useState(1); // 1: Form, 2: Success
@@ -130,7 +131,7 @@ export default function OrderModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             letterSpacing: '-1px'
                         }}>
-                            Kontakt aufnehmen´
+                            KONTAKT AUFNEHMEN
                         </h2>
 
                         <div style={{ marginBottom: '20px', textAlign: 'center' }}>
