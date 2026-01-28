@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function JoinListModal({ isOpen, onClose }) {
     const [name, setName] = useState('');

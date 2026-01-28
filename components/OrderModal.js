@@ -130,7 +130,7 @@ export default function OrderModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             letterSpacing: '-1px'
                         }}>
-                            BESTELLUNG ABSCHLIESSEN
+                            Kontakt aufnehmen´
                         </h2>
 
                         <div style={{ marginBottom: '20px', textAlign: 'center' }}>
@@ -156,7 +156,7 @@ export default function OrderModal({ isOpen, onClose }) {
                                     style={{ width: '100%', padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
                             </div>
 
-                            <div style={{ display: 'flex', gap: '10px' }}>
+                            <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
                                 <input type="text" name="city" placeholder="STADT *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.city} onChange={handleChange}
                                     style={{ flex: 1, padding: '10px', border: '1px solid #000', fontSize: '1rem', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }} />
                                 <input type="text" name="zip" placeholder="PLZ *" required={!formData.digitalDelivery} disabled={formData.digitalDelivery} value={formData.zip} onChange={handleChange}
@@ -172,7 +172,9 @@ export default function OrderModal({ isOpen, onClose }) {
                             <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                                     <input type="checkbox" id="newsletter" name="newsletter" checked={formData.newsletter} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }} />
-                                    <label htmlFor="newsletter" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>Ich stimme dem Newsletter zu.</label>
+                                    <label htmlFor="newsletter" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>
+                                        Ich willige ein, dass meine Angaben (inkl. Adresse) zur einmaligen Kontaktaufnahme per Brief oder E-Mail verarbeitet werden. <Link href="/impressum" target="_blank" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>
+                                    </label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                                     <input type="checkbox" id="digitalDelivery" name="digitalDelivery" checked={formData.digitalDelivery} onChange={handleChange} style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }} />
@@ -180,7 +182,7 @@ export default function OrderModal({ isOpen, onClose }) {
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn-primary" style={{ width: '100%', borderRadius: 0, marginTop: '10px', padding: '15px', opacity: loading ? 0.7 : 1 }} disabled={loading}>
+                            <button type="submit" className="btn-primary" style={{ width: '100%', borderRadius: 0, marginTop: '10px', padding: '15px', opacity: (loading || !formData.newsletter) ? 0.7 : 1 }} disabled={loading || !formData.newsletter}>
                                 {loading ? 'BEARBEITE...' : 'BESTELLUNG ABSCHICKEN'}
                             </button>
                         </form>
