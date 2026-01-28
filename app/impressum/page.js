@@ -9,14 +9,15 @@ export default function ImpressumPage() {
             <Header />
 
             <div className="container" style={{ flex: 1, padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
-                <h1 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '40px', textTransform: 'uppercase', textAlign: 'center' }}>
-                    IMPRESSUM & DATENSCHUTZ
-                </h1>
+
 
                 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '40px' }}>
 
                     {/* LEFT COLUMN: IMPRESSUM */}
                     <div style={{ flex: 1, minWidth: '300px', paddingRight: '40px', borderRight: '1px solid #000' }}>
+                        <h1 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
+                            IMPRESSUM
+                        </h1>
                         <section style={{ marginBottom: '40px' }}>
                             <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '20px', textTransform: 'uppercase' }}>Angaben gemäß § 5 TMG</h2>
                             <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
@@ -62,8 +63,11 @@ export default function ImpressumPage() {
 
                     {/* RIGHT COLUMN: PRIVACY */}
                     <div style={{ flex: 1, minWidth: '300px' }}>
+                        <h1 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
+                            DATENSCHUTZ
+                        </h1>
+
                         <section style={{ marginBottom: '40px' }}>
-                            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '20px', textTransform: 'uppercase' }}>Datenschutzerklärung (DSGVO)</h2>
                             <p style={{ lineHeight: '1.6', marginBottom: '20px' }}>
                                 Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst.
                             </p>
