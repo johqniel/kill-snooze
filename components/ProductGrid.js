@@ -24,18 +24,18 @@ export default function ProductGrid() {
             price: "€89.00",
             displayPrice: "€0.00",
             images: ["/envelope.png", "/envelope_product_one.png"],
-            statusText: `Free for the first ${limit} orders.`,
-            buttonText: "ADD TO CART",
+            statusText: `Kostenlos für die ersten ${limit} Bestellungen.`,
+            buttonText: "IN DEN WARENKORB",
             action: "add_to_cart"
         },
         {
             id: 2,
             name: "THE BOX",
             price: null,
-            displayPrice: "PREORDER",
+            displayPrice: "VORBESTELLEN",
             images: ["/box.png", "/box_product_one.png"],
-            statusText: "Register for preorder list.",
-            buttonText: "JOIN LIST",
+            statusText: "Für Vorbesteller-Liste anmelden.",
+            buttonText: "ANMELDEN",
             action: "join_list"
         }
     ];

@@ -31,14 +31,14 @@ export default function SuccessScreen() {
             padding: '20px'
         }}>
             <h1 style={{ fontSize: '4rem', fontWeight: '900', fontStyle: 'italic', marginBottom: '20px', lineHeight: 1 }}>
-                YOU MADE IT.
+                GESCHAFFT.
             </h1>
             <p style={{ fontSize: '2rem', fontWeight: 'bold', maxWidth: '800px' }}>
-                YOU ARE ONE OF THE FIRST {limit} CLIENTS.
+                DU BIST EINER DER ERSTEN {limit} KUNDEN.
             </p>
             <div style={{ width: '100px', height: '5px', backgroundColor: 'white', margin: '30px auto' }}></div>
             <p style={{ fontSize: '1.5rem' }}>
-                IT'S ON US.
+                ES GEHT AUF UNS.
             </p>
 
             <Link href="/" style={{
@@ -52,7 +52,7 @@ export default function SuccessScreen() {
                 textTransform: 'uppercase',
                 display: 'inline-block'
             }}>
-                BACK TO HOME
+                ZURÜCK ZUR STARTSEITE
             </Link>
         </div>
     );

@@ -56,11 +56,11 @@ export default function CartPage() {
                 clearCart();
                 setStep(3);
             } else {
-                alert('Failed to place order. Please try again.');
+                alert('Fehler bei der Bestellung. Bitte versuche es erneut.');
             }
         } catch (error) {
             console.error('Checkout error:', error);
-            alert('An error occurred. Please try again.');
+            alert('Ein Fehler ist aufgetreten. Bitte versuche es erneut.');
         } finally {
             setLoading(false);
         }
@@ -75,13 +75,14 @@ export default function CartPage() {
             <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
                 <Header />
                 <div className="container" style={{ flex: 1, padding: '40px 20px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '20px' }}>YOUR CART IS EMPTY</h1>
+                    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '20px' }}>DEIN WARENKORB IST LEER</h1>
                     <Link href="/" className="btn-primary" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                        START SHOPPING
+                        JETZT EINKAUFEN
                     </Link>
                 </div>
                 <footer style={{ textAlign: 'center', padding: '40px 0', color: '#999', fontSize: '0.8rem', borderTop: '1px solid #eee', marginTop: 'auto' }}>
-                    &copy; 2026 KILL SNOOZE INC. ALL RIGHTS RESERVED.
+                    &copy; 2026 KILL SNOOZE INC. ALLE RECHTE VORBEHALTEN.<br />
+                    <Link href="/impressum" style={{ color: '#999', textDecoration: 'underline', marginTop: '10px', display: 'inline-block' }}>IMPRESSUM</Link>
                 </footer>
             </main>
         );
@@ -99,7 +100,7 @@ export default function CartPage() {
 
             <div className="container" style={{ flex: 1, padding: '40px 20px', maxWidth: '800px' }}>
                 <h1 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '40px', textTransform: 'uppercase' }}>
-                    {step === 1 ? 'Your Cart' : 'Checkout'}
+                    {step === 1 ? 'DEIN WARENKORB' : 'KASSE'}
                 </h1>
 
                 {step === 1 && (
@@ -109,7 +110,7 @@ export default function CartPage() {
                                 <img src={imageSrc} alt={displayItem.name} style={{ width: '100px', height: '100px', objectFit: 'contain', backgroundColor: '#f9f9f9', padding: '10px' }} />
                                 <div>
                                     <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{displayItem.name}</h3>
-                                    <p style={{ color: '#666' }}>Quantity: 1</p>
+                                    <p style={{ color: '#666' }}>Menge: 1</p>
                                 </div>
                             </div>
                             <div style={{ textAlign: 'right' }}>
@@ -120,15 +121,15 @@ export default function CartPage() {
 
                         <div style={{ borderTop: '1px solid #eee', padding: '20px 0', borderBottom: '1px solid #eee', marginBottom: '40px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                                <span>Subtotal</span>
+                                <span>Zwischensumme</span>
                                 <span>{displayItem.price}</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#d01d1d', fontWeight: 'bold' }}>
-                                <span>Discount (FIRST{limit})</span>
+                                <span>Rabatt (FIRST{limit})</span>
                                 <span>-{displayItem.price}</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.5rem', fontWeight: '900', marginTop: '20px' }}>
-                                <span>TOTAL</span>
+                                <span>GESAMT</span>
                                 <span>{displayItem.displayPrice || "€0.00"}</span>
                             </div>
                         </div>
@@ -147,7 +148,7 @@ export default function CartPage() {
                                 cursor: 'pointer'
                             }}
                         >
-                            PROCEED TO PERSONAL INFORMATION
+                            WEITER ZU DEN PERSÖNLICHEN DATEN
                         </button>
                     </div>
                 )}
@@ -155,33 +156,33 @@ export default function CartPage() {
                 {step === 2 && (
                     <form onSubmit={handlePlaceOrder}>
                         <div style={{ marginBottom: '30px' }}>
-                            <h2 style={{ fontSize: '1.5rem', marginBottom: '20px', fontWeight: 'bold' }}>CONTACT & SHIPPING</h2>
+                            <h2 style={{ fontSize: '1.5rem', marginBottom: '20px', fontWeight: 'bold' }}>KONTAKT & VERSAND</h2>
 
-                            <input type="text" name="name" placeholder="FULL NAME" required
+                            <input type="text" name="name" placeholder="VOLLSTÄNDIGER NAME" required
                                 style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0 }}
                                 onChange={handleChange} />
 
-                            <input type="email" name="email" placeholder="EMAIL ADDRESS" required
+                            <input type="email" name="email" placeholder="E-MAIL ADRESSE" required
                                 style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0 }}
                                 onChange={handleChange} />
 
-                            <input type="text" name="address" placeholder="STREET ADDRESS" required={!formData.digitalDelivery}
+                            <input type="text" name="address" placeholder="STRASSE & HAUSNUMMER" required={!formData.digitalDelivery}
                                 style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }}
                                 disabled={formData.digitalDelivery}
                                 onChange={handleChange} />
 
                             <div style={{ display: 'flex', gap: '15px' }}>
-                                <input type="text" name="city" placeholder="CITY" required={!formData.digitalDelivery}
+                                <input type="text" name="city" placeholder="STADT" required={!formData.digitalDelivery}
                                     style={{ flex: 1, padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }}
                                     disabled={formData.digitalDelivery}
                                     onChange={handleChange} />
-                                <input type="text" name="zip" placeholder="ZIP CODE" required={!formData.digitalDelivery}
+                                <input type="text" name="zip" placeholder="PLZ" required={!formData.digitalDelivery}
                                     style={{ flex: 1, padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }}
                                     disabled={formData.digitalDelivery}
                                     onChange={handleChange} />
                             </div>
 
-                            <input type="text" name="country" placeholder="COUNTRY" required={!formData.digitalDelivery}
+                            <input type="text" name="country" placeholder="LAND" required={!formData.digitalDelivery}
                                 style={{ display: 'block', width: '100%', padding: '15px', marginBottom: '15px', border: '2px solid #000', borderRadius: 0, opacity: formData.digitalDelivery ? 0.5 : 1 }}
                                 disabled={formData.digitalDelivery}
                                 onChange={handleChange} />
@@ -198,7 +199,7 @@ export default function CartPage() {
                                         style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }}
                                     />
                                     <label htmlFor="newsletter" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>
-                                        I agree to subscribe to the newsletter.
+                                        Ich stimme dem Newsletter zu.
                                     </label>
                                 </div>
 
@@ -212,7 +213,7 @@ export default function CartPage() {
                                         style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }}
                                     />
                                     <label htmlFor="digitalDelivery" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>
-                                        Receive product via email instead of mail.
+                                        Produkt per E-Mail erhalten statt Post.
                                     </label>
                                 </div>
                             </div>
@@ -224,14 +225,15 @@ export default function CartPage() {
                             style={{ width: '100%', borderRadius: 0, opacity: loading ? 0.7 : 1 }}
                             disabled={loading}
                         >
-                            {loading ? 'PROCESSING...' : 'PLACE ORDER'}
+                            {loading ? 'BEARBEITE...' : 'BESTELLUNG ABSCHICKEN'}
                         </button>
                     </form>
                 )}
             </div>
 
             <footer style={{ textAlign: 'center', padding: '40px 0', color: '#999', fontSize: '0.8rem', borderTop: '1px solid #eee', marginTop: 'auto' }}>
-                &copy; 2026 KILL SNOOZE INC. ALL RIGHTS RESERVED.
+                &copy; 2026 KILL SNOOZE INC. ALL RIGHTS RESERVED. <br />
+                <Link href="/impressum" style={{ color: '#999', textDecoration: 'underline', marginTop: '10px', display: 'inline-block' }}>IMPRESSUM</Link>
             </footer>
         </main>
     );

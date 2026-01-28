@@ -20,12 +20,12 @@ export default function JoinListModal({ isOpen, onClose }) {
         setLoading(true);
 
         if (!email) {
-            setError('Please enter your email.');
+            setError('Bitte gib deine E-Mail-Adresse ein.');
             setLoading(false);
             return;
         }
         if (!agreed) {
-            setError('You must agree to subscribe to the newsletter.');
+            setError('Du musst dem Newsletter zustimmen.');
             setLoading(false);
             return;
         }
@@ -45,10 +45,10 @@ export default function JoinListModal({ isOpen, onClose }) {
                 setAgreed(false);
             } else {
                 const data = await response.json();
-                setError(data.error || 'Something went wrong.');
+                setError(data.error || 'Etwas ist schiefgelaufen.');
             }
         } catch (err) {
-            setError('Failed to submit. Please try again.');
+            setError('Fehler beim Senden. Bitte versuche es erneut.');
         } finally {
             setLoading(false);
         }
@@ -101,7 +101,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             marginBottom: '20px'
                         }}>
-                            Thank You For Joining
+                            DANKE FÜR DIE ANMELDUNG
                         </h2>
                         <p style={{
                             fontSize: '1rem',
@@ -109,7 +109,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                             letterSpacing: '1px',
                             marginBottom: '30px'
                         }}>
-                            We will keep you posted.
+                            WIR HALTEN DICH AUF DEM LAUFENDEN.
                         </p>
                         <button
                             onClick={onClose}
@@ -122,7 +122,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                                 fontWeight: 'bold'
                             }}
                         >
-                            Close
+                            SCHLIESSEN
                         </button>
                     </div>
                 ) : (
@@ -135,14 +135,14 @@ export default function JoinListModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             letterSpacing: '-1px'
                         }}>
-                            Join The Waitlist
+                            AUF DIE WARTELISTE
                         </h2>
 
                         {error && <p style={{ color: '#d01d1d', marginBottom: '15px', fontWeight: 'bold' }}>{error}</p>}
 
                         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px', textAlign: 'left' }}>
                             <div>
-                                <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase', fontSize: '0.9rem' }}>Name</label>
+                                <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase', fontSize: '0.9rem' }}>NAME</label>
                                 <input
                                     type="text"
                                     value={name}
@@ -158,7 +158,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                             </div>
 
                             <div>
-                                <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase', fontSize: '0.9rem' }}>Email *</label>
+                                <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase', fontSize: '0.9rem' }}>E-MAIL *</label>
                                 <input
                                     type="email"
                                     value={email}
@@ -183,7 +183,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                                     style={{ marginTop: '5px', transform: 'scale(1.2)', cursor: 'pointer' }}
                                 />
                                 <label htmlFor="newsletter" style={{ fontSize: '0.9rem', cursor: 'pointer', lineHeight: '1.4' }}>
-                                    I agree to subscribe to the newsletter and receive updates about product availability.
+                                    Ich stimme der Anmeldung zum Newsletter zu und möchte Updates erhalten.
                                 </label>
                             </div>
 
@@ -198,7 +198,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                                 }}
                                 disabled={loading}
                             >
-                                {loading ? 'JOINING...' : 'SUBMIT'}
+                                {loading ? 'ANMELDEN...' : 'ABSENDEN'}
                             </button>
                         </form>
                     </>
