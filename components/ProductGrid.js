@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import JoinListModal from './JoinListModal';
 import { useCart } from '../context/CartContext';
+import { useRouter } from 'next/navigation';
 
 export default function ProductGrid() {
     const { addToCart } = useCart();
+    const router = useRouter(); // Initialize router
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [limit, setLimit] = useState(99); // Default limit
 
@@ -21,28 +23,25 @@ export default function ProductGrid() {
         {
             id: 1,
             name: "THE ENVELOPE",
-            price: "€89.00",
-            displayPrice: "€0.00",
             images: ["/envelope.png", "/envelope_product_one.png"],
             statusText: `Kostenlos für die ersten ${limit} Bestellungen.`,
-            buttonText: "IN DEN WARENKORB",
-            action: "add_to_cart"
+            buttonText: "KONTAKT AUFNEHMEN",
+            action: "contact"
         },
         {
             id: 2,
             name: "THE BOX",
-            price: null,
-            displayPrice: "VORBESTELLEN",
             images: ["/box.png", "/box_product_one.png"],
             statusText: "Für Vorbesteller-Liste anmelden.",
-            buttonText: "ANMELDEN",
+            buttonText: "PROJEKT UNTERSTÜTZEN",
             action: "join_list"
         }
     ];
 
     const handleAction = (product) => {
-        if (product.action === 'add_to_cart') {
-            addToCart(product);
+        if (product.action === 'contact') {
+            addToCart(product); // Keep this to set the item in context, though we might not use it visually
+            router.push('/cart');
         } else if (product.action === 'join_list') {
             setIsModalOpen(true);
         }
