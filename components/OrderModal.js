@@ -120,10 +120,10 @@ export default function OrderModal({ isOpen, onClose }) {
                             GESCHAFFT!
                         </h2>
                         <p style={{ fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '30px' }}>
-                            Deine Bestellung war erfolgreich.
+                            Deine Kontaktaufnahme war erfolgreich.
                         </p>
                         <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '30px' }}>
-                            Du erhältst in Kürze eine Bestätigung per E-Mail.
+                            Du erhältst in Kürze einmalig Infomaterial von uns.
                         </p>
                         <button onClick={onClose} className="btn-primary" style={{ width: '100%', borderRadius: 0 }}>
                             SCHLIESSEN

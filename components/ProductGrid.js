@@ -25,7 +25,7 @@ export default function ProductGrid() {
             id: 1,
             name: "THE ENVELOPE",
             images: USE_COMIC_IMAGES
-                ? ["/envelope_comic.png", "/envelope_product_one.png"]
+                ? ["/envelope_comic.png"] // Single image for comic mode
                 : ["/envelope.png", "/envelope_product_one.png"],
             statusText: "----------",
             buttonText: "KONTAKT AUFNEHMEN",
@@ -35,7 +35,7 @@ export default function ProductGrid() {
             id: 2,
             name: "THE BOX",
             images: USE_COMIC_IMAGES
-                ? ["/box_comic.png", "/box_product_one.png"]
+                ? ["/box_comic.png"] // Single image for comic mode
                 : ["/box.png", "/box_product_one.png"],
             statusText: "------------",
             buttonText: "PROJEKT UNTERSTÜTZEN",

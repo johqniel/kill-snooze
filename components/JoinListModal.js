@@ -102,7 +102,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                             textTransform: 'uppercase',
                             marginBottom: '20px'
                         }}>
-                            DANKE FÜR DIE ANMELDUNG
+                            DANKE!
                         </h2>
                         <p style={{
                             fontSize: '1rem',
@@ -110,7 +110,7 @@ export default function JoinListModal({ isOpen, onClose }) {
                             letterSpacing: '1px',
                             marginBottom: '30px'
                         }}>
-                            WIR HALTEN DICH AUF DEM LAUFENDEN.
+                            Du erhältst in Kürze das Infomaterial per E-Mail.
                         </p>
                         <button
                             onClick={onClose}
