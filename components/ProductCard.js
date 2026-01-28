@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function ProductCard({ product, onAddToCart }) {
+export default function ProductCard({ product, onAction }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -97,7 +97,7 @@ export default function ProductCard({ product, onAddToCart }) {
             </p>
 
             <button
-                onClick={() => onAddToCart && onAddToCart(product)}
+                onClick={() => onAction && onAction(product)}
                 className="btn-primary"
                 style={{
                     width: '100%',

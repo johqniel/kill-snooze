@@ -75,7 +75,7 @@ export default function ProductGrid() {
                         <ProductCard
                             key={product.id}
                             product={product}
-                            onAddToCart={() => handleAction(product)}
+                            onAction={() => handleAction(product)}
                         />
                     ))}
                 </div>
