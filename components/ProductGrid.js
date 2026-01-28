@@ -73,11 +73,7 @@ export default function ProductGrid() {
                     minimize your snooze, unleash your full potential
                 </div>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
-                    gap: '40px'
-                }}>
+                <div className="product-grid">
                     {products.map((product) => (
                         <ProductCard
                             key={product.id}

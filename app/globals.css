@@ -93,6 +93,13 @@ a {
   border-right: 1px solid #000;
 }
 
+/* Product Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 40px;
+}
+
 @media (max-width: 768px) {
   .site-logo {
     font-size: 3rem;
@@ -122,5 +129,12 @@ a {
   .container {
     padding: 0 15px;
     /* Slightly reduce padding on very small screens */
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    /* Full width on mobile */
+    gap: 20px;
+    /* Reduce gap on mobile */
   }
 }
