@@ -15,7 +15,7 @@ export default function ImpressumPage() {
 
                     {/* LEFT COLUMN: IMPRESSUM */}
                     <div className="impressum-column impressum-column-left">
-                        <h1 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
+                        <h1 className="section-title">
                             IMPRESSUM
                         </h1>
                         <section style={{ marginBottom: '40px' }}>
@@ -63,7 +63,7 @@ export default function ImpressumPage() {
 
                     {/* RIGHT COLUMN: PRIVACY */}
                     <div className="impressum-column">
-                        <h1 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '30px', textTransform: 'uppercase', textAlign: 'center' }}>
+                        <h1 className="section-title">
                             DATENSCHUTZ
                         </h1>
 

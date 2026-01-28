@@ -66,6 +66,15 @@ a {
   border-color: #808080;
 }
 
+/* Section Title (Impressum Headers etc) */
+.section-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 /* Impressum Layout */
 .impressum-grid {
   display: flex;
@@ -85,6 +94,18 @@ a {
 }
 
 @media (max-width: 768px) {
+  .site-logo {
+    font-size: 3rem;
+    /* Scale down logo on mobile */
+    letter-spacing: -2px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    /* Scale down headers */
+    margin-bottom: 20px;
+  }
+
   .impressum-grid {
     flex-direction: column;
     gap: 0;
@@ -96,5 +117,10 @@ a {
     border-bottom: 1px solid #000;
     padding-bottom: 40px;
     margin-bottom: 40px;
+  }
+
+  .container {
+    padding: 0 15px;
+    /* Slightly reduce padding on very small screens */
   }
 }
