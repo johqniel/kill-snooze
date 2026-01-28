@@ -19,7 +19,7 @@ export default function ImpressumPage() {
                             IMPRESSUM
                         </h1>
                         <section style={{ marginBottom: '40px' }}>
-                            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '20px', textTransform: 'uppercase' }}>Angaben gemäß § 5 TMG</h2>
+                            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '20px', textTransform: 'uppercase' }}>Angaben gemäß § 5 DDG</h2>
                             <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
                                 Daniel Nogues Kollert<br />
                                 Höningerweg 47<br />
@@ -46,7 +46,7 @@ export default function ImpressumPage() {
 
                             <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '10px' }}>Haftung für Inhalte</h3>
                             <p style={{ lineHeight: '1.6', marginBottom: '15px' }}>
-                                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
+                                Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
                             </p>
 
                             <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '10px' }}>Haftung für Links</h3>
