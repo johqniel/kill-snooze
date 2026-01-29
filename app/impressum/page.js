@@ -22,8 +22,8 @@ export default function ImpressumPage() {
                             <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '20px', textTransform: 'uppercase' }}>Angaben gemäß § 5 DDG</h2>
                             <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
                                 Daniel Nogues Kollert<br />
-                                Höningerweg 47<br />
-                                50969 Köln<br />
+                                Bernhardstr. 109a<br />
+                                50968 Köln<br />
                                 Deutschland
                             </p>
 
@@ -36,8 +36,8 @@ export default function ImpressumPage() {
                             <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '10px' }}>Redaktionell verantwortlich</h3>
                             <p style={{ lineHeight: '1.6' }}>
                                 Daniel Nogues Kollert<br />
-                                Höningerweg 47<br />
-                                50969 Köln
+                                Bernhardstr. 109a<br />
+                                50968 Köln
                             </p>
                         </section>
 
